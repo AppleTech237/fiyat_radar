@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4 card p-4 shadow-sm">
+        <h2 class="text-center mb-4">Sign Up</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for text in form %}
+            <div class="mb-3">
+                <label class="form-label fw-bold">{{ text.label }}</label>
+                {{ text }}
+
+                {% if text.errors %}
+                <div class="text-danger small">
+                    {{ text.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary w-100 mt-2">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

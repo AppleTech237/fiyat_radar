@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="mx-auto my-4 text-center shadow-lg" style="width: 600px; ">
+    <h4>I have a problem here</h4>
+    <span>😭😭😭😭</span>
+</div>
+<div>
+    <div class="row mb-5 text-center text-muted">
+        <div class="col">
+            <h3 class="fw-bold">
+                {% if query %}
+
+                        {% if query in products %}
+                                Results for "{{ query }}"
+                            {% else %}
+                                We found no products matching your search. </br>
+                                Please check and try again.
+                        {% endif %}
+
+                {% else %}
+                     Please check and try again.
+                {% endif %}
+                
+            </h3>
+        </div>
+    </div>
+    <ul>
+        {% for product in products %}
+
+        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">
+            {{ product.name }}
+        </a>
+
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

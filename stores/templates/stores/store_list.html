@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-5">Our Partner Stores</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for s in stores %}
+        <div class="col text-center">
+            <div class="card h-100 shadow-sm p-4">
+                <img src="{{ s.logo_url }}" class="card-img-top mx-auto" style="width: 120px; height: 80px; object-fit: contain;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ s.name }}</h5>
+                    <a href="{{ s.website_url }}" class="btn btn-outline-dark btn-sm mt-2">Visit the shop</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

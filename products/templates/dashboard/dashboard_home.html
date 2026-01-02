@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4>My current alerts</h4>
+<div class="row">
+    {% for alert in alerts %}
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ alert.product.name }}</h5>
+                <p class="card-text">Target price : <span class="text-danger fw-bold">{{ alert.target_price }} ₺</span></p>
+                
+                <a href="{% url 'delete_alert' alert.id %}" 
+                    class="btn btn-sm btn-danger" 
+                    onclick="return confirm('Are you sure you want to remove this alert?')">
+                    Remove the alert
+                </a>
+
+            {% if alert.price_alert %}
+                <div class="badge bg-success">
+                    <a href="{% url 'product_detail' alert.product.id %}" class="text-white small fw-bold">Price found ! Check it here</a>
+                </div>
+
+                {% else %}
+                <span class="badge bg-secondary">Waiting for a new price</span>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+    <p>You have no active alerts.</p>
+    {% endfor %}
+</div>
+{% endblock %}
