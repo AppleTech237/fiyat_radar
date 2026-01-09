@@ -3,14 +3,11 @@
 {% block content %}
 
 
-<div class="mx-auto my-4 text-center shadow-lg" style="width: 600px; ">
-    <h4>I have a problem here</h4>
-    <span>😭😭😭😭</span>
-</div>
+
 <div>
     <div class="row mb-5 text-center text-muted">
         <div class="col">
-            <h3 class="fw-bold">
+            <h3 class="fw-bold mt-4">
                 {% if query %}
 
                         {% if query in products %}
@@ -21,7 +18,7 @@
                         {% endif %}
 
                 {% else %}
-                     Please check and try again.
+                     Please check your product and try again.
                 {% endif %}
                 
             </h3>
