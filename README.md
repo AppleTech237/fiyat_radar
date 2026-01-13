@@ -8,10 +8,10 @@
 - Matias Fernando Ndong Owono  
 - Mario Enrique Motede Dasilva  
 
-## Objectif du projet
-Fiyat Radar, Django tabanlı olarak geliştirilen bir web uygulamasıdır.
-Bu uygulama, kullanıcıların farklı marketlerde satışa sunulan ürünlerin fiyatlarını
-kolay ve hızlı bir şekilde karşılaştırmalarını amaçlamaktadır.
+## Projenin Amacı
+Fiyat Radar, Django framework’ü kullanılarak geliştirilmiş bir web uygulamasıdır.  
+Bu uygulama, kullanıcıların farklı marketlerde satılan ürünlerin fiyatlarını
+kolayca karşılaştırabilmesini amaçlamaktadır
 
 Projenin temel hedefleri şunlardır:
 - Fiyat karşılaştırmasını hızlı ve anlaşılır hale getirmek  
