@@ -10,8 +10,6 @@
 
 ## Projenin Amacı
 Fiyat Radar, Django ile geliştirilmiş bir web uygulamasıdır.
-
-Fiyat Radar, Django ile geliştirilmiş bir web uygulamasıdır.
 Bu uygulamanın amacı, kullanıcıların farklı süpermarketlerde satılan
 ürünlerin fiyatlarını kolayca karşılaştırabilmesini sağlamaktır.
 
@@ -75,7 +73,7 @@ fiyat_radar/
 * stores/urls.py
 * stores/views.py
 
-## Matias Fernando Ndong Owono ve Mario Enrique Motede Dasilva
+### Matias Fernando Ndong Owono ve Mario Enrique Motede Dasilva
 * Store_list.html
 * about.html
 * contact.html
