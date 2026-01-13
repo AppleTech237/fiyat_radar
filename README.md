@@ -8,7 +8,7 @@
 - Matias Fernando Ndong Owono  
 - Mario Enrique Motede Dasilva  
 
-## Projenin Amacı
+## Objectif du projet
 Fiyat Radar, Django tabanlı olarak geliştirilen bir web uygulamasıdır.
 Bu uygulama, kullanıcıların farklı marketlerde satışa sunulan ürünlerin fiyatlarını
 kolay ve hızlı bir şekilde karşılaştırmalarını amaçlamaktadır.
