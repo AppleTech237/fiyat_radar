@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    
+   
+    {% for category in categories %}
+        
+        {% if category.products.exists %}
+            <div class="category-section mb-5">
+                <div class="d-flex align-items-center mb-3">
+                    <h3 class="fw-bold text-dark mb-0 me-3">{{ category.name }}</h3>
+                    <div class="flex-grow-1 border-bottom"></div> </div>
+
+                <div class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-4">
+                    
+                    {% for p in category.products.all %}
+                    <div class="col">
+                        <div class="card h-100">
+                            
+                            <div class="text-center bg-light rounded-top">
+                                {% if p.image %}
+                                    <img src="{{ p.image.url }}" class="product-img" alt="{{ p.name }}">
+                                {% elif p.image_url %}
+                                    <img src="{{ p.image_url }}" class="product-img" alt="{{ p.name }}">
+                                {% else %}
+                                    <div class="no-image-placeholder">
+                                        <i class="bi bi-image text-muted fs-1"></i>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title fw-bold text-dark mb-1">{{ p.name }}</h6>
+                                <small class="text-muted mb-3">{{ p.description|truncatechars:50 }}</small>
+                                
+                                <div class="mt-auto">
+                                    <div class="d-grid">
+                                        <a href="{% url 'product_detail' p.id %}" class="btn btn-primary btn-sm">
+                                            İncele
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} </div>
+            </div>
+        {% endif %}
+    {% empty %}
+        <div class="alert alert-info text-center">
+            Henüz hiç kategori veya ürün bulunmamaktadır.
+        </div>
+    {% endfor %} </div>
+{% endblock %}

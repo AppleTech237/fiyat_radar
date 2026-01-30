@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4 class="mb-0 fw-bold">Profilim</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="row text-center mb-4">
+                        <div class="col">
+                            <h4 class="fw-bold mb-0 text-primary">{{ count_alerts }}</h4>
+                            <small class="text-muted">Uyarılar oluşturuldu</small>
+                        </div>
+                        <div class="col border-start">
+                            <h4 class="fw-bold mb-0 text-success">
+                                {{ number_of_alerts }}
+                            </h4>
+                            <small class="text-muted">Uyarılar bulundu</small>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-3">
+                            <span class="text-muted"><i class="bi bi-person-fill me-2"></i>Kullanıcı adı</span>
+                            <span class="fw-bold text-dark">{{ user.username }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-3">
+                            <span class="text-muted"><i class="bi bi-envelope-fill me-2"></i>E-posta</span>
+                            <span class="fw-semibold text-dark">{{ user.email|default:"Henüz ayarlanmadı" }}</span>
+                        </li>
+                    </ul>
+
+                    <div class="d-grid mt-4">
+                        <form action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger w-100">Oturumu Kapat</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

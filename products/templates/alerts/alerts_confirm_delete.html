@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-6 text-center">
+        <div class="alert alert-danger shadow">
+            <h3>Emin misiniz? </h3>
+            <p><strong>{{ alert.product.name }}</strong> için olan uyarıyı silmek üzeresiniz.</p>
+            <p class="small text-danger">Bu işlem geri alınamaz.</p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-danger px-4">Evet, Sil</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary px-4">İptal</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

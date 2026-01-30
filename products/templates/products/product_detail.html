@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-5 mb-4 text-center">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid rounded shadow border product-detail-img" 
+                     alt="{{ product.name }}">
+            {% elif product.image_url %}
+                <img src="{{ product.image_url }}" class="img-fluid rounded shadow border product-detail-img" 
+                     alt="{{ product.name }}">
+            {% else %}
+                <div class="border rounded d-flex align-items-center justify-content-center no-image-placeholder">
+                    <div class="text-center">
+                        <img src="https://via.placeholder.com/200x200?text=No+product+image" class="img-fluid"
+                             alt="No product image">
+                        <p class="text-muted mt-2">Resim mevcut değil</p>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <div class="mt-4 p-3 border rounded bg-light">
+                <h5>Fiyat takibi</h5>
+                <p class="small text-muted">Fiyat düşerse beni bilgilendir.</p>
+                <a href="{% url 'create_alert' product.id %}" class="btn btn-outline-primary">
+                    Fiyat uyarısı oluşturun
+                </a>
+            </div>
+            {% else %}
+            <div class="mt-4 p-3 border rounded bg-light">
+                <p class="mb-0">Fiyat uyarısı oluşturmak için giriş yapmalısınız.</p>
+                <a href="{% url 'login' %}" class="btn btn-sm btn-secondary mt-2">Giriş yap</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-7">
+            <h1 class="fw-bold mb-3">{{ product.name }}</h1>
+            <p class="text-muted mb-4">{{ product.description }}</p>
+
+            <h4 class="fw-bold mb-3">Mevcut fiyatlar :</h4>
+            <div class="list-group shadow-sm">
+                {% for p in prices %}
+                <div class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <div>
+                        <h5 class="mb-1 fw-bold">{{ p.store.name }}</h5>
+                        <small class="text-muted"> {{ p.updated_at|date:"d/m/Y" }} tarihinde doğrulandı.</small>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-success fs-5 p-2">{{ p.price }} ₺</span>
+                        <br>
+                        {% if p.url_on_store %}
+                        <a href="{{ p.url_on_store }}" target="_blank"
+                            class="btn btn-primary btn-sm mt-2 px-3 rounded-pill">
+                            Mağazaya git <i class="bi bi-box-arrow-up-right"></i>
+                        </a>
+                        {% else %}
+                        <button class="btn btn-secondary btn-sm mt-2 px-3 rounded-pill" disabled>Bağlantı mevcut değil</button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <div class="alert alert-warning border-0 shadow-sm">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    Üzgünüz, şu anda bu ürün için herhangi bir teklif bulamadık.
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

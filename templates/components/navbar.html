@@ -1,0 +1,47 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg py-1">
+    <div class="container-fluid">
+        <a class="navbar-brand py-0 my-0 rounded-pill" href="{% url 'home' %}">
+            <img src="{% static 'img/logo_white.png' %}" alt="Fiyat Radar" height="70">
+        </a>
+        
+        {% if user.is_authenticated %}
+        <form action="{% url 'search_products' %}" method="GET" class="d-flex w-33">
+            <input name="q" class="form-control rounded-pill ms-4 py-1 my-2" type="search"
+                placeholder="Ürün ara" aria-label="Search" value="{{ query|default:'' }}">
+            <button class="btn btn-outline-light ms-2 rounded-pill py-0 my-2 btn-sm" type="submit">Aramak</button>
+        </form>
+        {% endif %}
+
+        <ul class="navbar-nav ms-auto align-items-center">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="btn btn-outline-light ms-3 rounded-pill px-1 py-0 me-4" href="{% url 'user_profile' %}">Hesabim</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white me-3" href="{% url 'all_products' %}">Tüm ürünler</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white me-3" href="{% url 'store_list' %}">Mağazalarımız</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white me-3" href="{% url 'dashboard' %}">Uyarılarım</a>
+            </li>
+            <li class="nav-item">
+                <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-link nav-link text-white me-3 px-1 py-0">Oturumu kapat</button>
+                </form>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="btn btn-outline-primary me-3 px-1 py-0" href="{% url 'login' %}">Oturum aç</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-light me-3 px-1 py-0" href="{% url 'register' %}">Kayıt ol</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
