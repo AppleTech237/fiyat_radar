@@ -1,90 +1,57 @@
-# FIYAT RADAR
+# FİYAT RADAR
 
-## *Grup Adı:* Fiyat Radar Grubu
+**Grup Adı:** Fiyat Radar<br>
+**Teknolojiler:** Python 3.x, Django 4.x, Bootstrap 5, SQLite
 
-## Grup Üyeleri
-- Jean Innocent Manta Nsangou  
-- Gaius Joresse Azangue Tengam  
-- Matias Fernando Ndong Owono  
-- Mario Enrique Motede Dasilva  
 
-## Projenin Amacı
-Fiyat Radar, Django framework’ü temel alınarak geliştirilen bir web tabanlı uygulamadır. Bu uygulama, 
-kullanıcıların çeşitli marketlerde satışa sunulan ürünlerin fiyatlarını karşılaştırmalarını 
-sağlayarak daha rasyonel ve ekonomik alışveriş kararları almalarına yardımcı olmayı amaçlamaktadır.
 
-Projenin temel hedefleri şunlardır:
+## Grup Üyeleri ve Görev Dağılımı
 
-- Fiyat karşılaştırmasını hızlı ve anlaşılır hale getirmek  
-- Kullanıcıların daha ekonomik alışveriş yapmasına yardımcı olmak  
-- Sade, modern, responsive ve kullanıcı dostu bir arayüz sunmak  
-- Django tabanlı web uygulaması geliştirme becerilerini pekiştirmek  
+Bu proje, ekip çalışması ile modüler bir yapıda geliştirilmiştir. Her üye belirli uygulamaların (Apps) ve sayfaların geliştirilmesinden sorumludur.
 
-## Öğrenilen Teknolojiler
-- Python 3.x  
-- Django 4.x  
-- HTML5  
-- CSS3  
-- SQLite (varsayılan veritabanı)
+| Öğrenci Adı Soyadı | Sorumluluk Alanları (Apps & Dosyalar) |
+| :--- | :--- |
+| **Gaius Joresse Azangue Tengam** | **Products & Alerts (Ürünler ve Uyarılar)**<br>• `products/` (Tüm yapı)<br>• `templates/products/` (all_products, product_detail)<br>• `alerts_form.html`, `alerts_confirm_delete.html`<br>• Fiyat Karşılaştırma ve Arama Mantığı<br>• Kullanıcı Deneyimi (UX) İyileştirmeleri |
+| **Jean Innocent Manta Nsangou** | **Accounts & Stores (Hesaplar ve Mağazalar)**<br>• `accounts/` (views.py, forms.py, urls.py)<br>• `login.html`, `register.html`, `user_profile.html`<br>• `stores/` (models.py, views.py, urls.py)<br>• Mağaza veritabanı yapısı |
+| **Matias Fernando Ndong Owono** <br> **Mario Enrique Motede Dasilva** | **Pages & Static Content (Statik Sayfalar)**<br>• `pages/` (urls.py, views.py)<br>• `home.html` (Ana Sayfa)<br>• `about.html` (Hakkımızda)<br>• `contact.html` (İletişim)<br>• `store_list.html` (Mağaza Listesi Arayüzü) |
 
-## Proje Yapısı
+
+
+## Projenin Amacı ve Kapsamı (Ön Fizibilite)
+
+**Fiyat Radar**, Django framework’ü temel alınarak geliştirilen bir web tabanlı uygulamadır. Bu uygulama, kullanıcıların çeşitli marketlerde satışa sunulan ürünlerin fiyatlarını karşılaştırmalarını sağlayarak daha rasyonel ve ekonomik alışveriş kararları almalarına yardımcı olmayı amaçlamaktadır.
+
+### Temel Hedefler:
+1. **Fiyat Karşılaştırma:** Farklı satıcılardaki fiyatları tek ekranda sunarak süreci hızlandırmak.
+2. **Ekonomik Alışveriş:** Kullanıcının en uygun fiyatı bulmasına yardımcı olmak.
+3. **Kullanıcı Dostu Arayüz:** Sade, modern ve responsive (mobil uyumlu) bir tasarım sunmak.
+4. **Teknik Gelişim:** Django tabanlı web uygulaması geliştirme becerilerini (CRUD, Auth, MVT) pekiştirmek.
+
+
+
+## SWOT Analizi
+
+| **Güçlü Yönler (Strengths)** | **Zayıf Yönler (Weaknesses)** |
+| :--- | :--- |
+|  **Tam Modüler Yapı:** Proje, görev dağılımına uygun olarak `products`, `accounts`, `stores` app'lerine ayrılmıştır.<br> **CRUD Özellikleri:** Ürün ve Alarm ekleme/silme/düzenleme fonksiyonları aktiftir.<br> **Güvenlik:** Django Auth sistemi ile güvenli oturum yönetimi.<br> **Responsive Tasarım:** Bootstrap ile tüm cihazlarda düzgün görüntüleme. |  **Otomasyon Eksikliği:** Fiyatlar şu an için manuel girilmektedir (Web scraping entegrasyonu sonraki aşamadır).<br> **Veri Girişi:** Ürün veritabanının elle doldurulması zaman almaktadır. |
+
+| **Fırsatlar (Opportunities)** | **Tehditler (Threats)** |
+| :--- | :--- |
+| **Enflasyon:** Fiyat dalgalanmaları nedeniyle bu tür uygulamalara olan ihtiyaç artmaktadır.<br> **Mobil Entegrasyon:** API desteği ile mobil uygulamaya dönüştürülebilir. |  **Rakipler:** Akakçe, Cimri gibi büyük pazar liderleri.<br>⚔️ **Sunucu Maliyetleri:** Veri tabanı büyüdükçe barındırma maliyeti artabilir. |
+
+
+
+## Proje Dosya Yapısı
+
 ```text
 fiyat_radar/
 │
 ├── accounts/      → Kullanıcı yönetimi (login, register, user_profile)        
 ├── pages/         → Statik sayfalar (Home, About, Contact)      
-├── products/      → Ürünler ve fiyat karşılaştırma işlemleri    
+├── products/      → Ürünler, Fiyat Karşılaştırma ve Alarmlar (CRUD)    
 ├── stores/        → Market listesi ve market detayları          
-├── templates/     → base.html                                  
-├── static/        → CSS, JS ve görseller                        
-├── media/         → Yüklenen medya dosyaları                    
+├── templates/     → Global şablonlar (base.html, navbar.html, footer.html)                                  
+├── static/        → CSS, JS ve görseller (style.css)                        
+├── media/         → Yüklenen ürün görselleri                    
 ├── manage.py      → Django proje giriş noktası
-└── README.md
-```
-
-## Fonksiyonlar
-
-* Kullanıcı kayıt ve giriş sistemi
-* Ürün listeleme
-* Ürün detay sayfaları
-* Farklı marketler arasında fiyat karşılaştırma
-* Market listeleme ve detay görüntüleme
-* Kullanıcı dostu ve sade arayüz
-
-
-## Uygulama Sorumluları ve Görev Dağılımı
-
-### Gaius Joresse Azangue Tengam
-* alerts_form.html
-* Ürün Listesi
-* Ürün Detay Sayfaları
-* Fiyat Karşılaştırma Sayfası
-* Ürün Arama Sayfası
-* Uyarı Sayfası
-* Kullanıcı Deneyimi (UX) İyileştirmeleri
-
-### Jean Innocent Manta Nsangou
-* login.html
-* register.html
-* user_profile.htmls
-* accounts/forms.py
-* account/urls.py
-* accounts/views.py
-* stores/models.py
-* stores/urls.py
-* stores/views.py
-
-### Matias Fernando Ndong Owono ve Mario Enrique Motede Dasilva
-* Store_list.html
-* about.html
-* contact.html
-* home.html
-* pages/urls.py
-* pages/views.py
-
-
-
-## Sonuç
-Fiyat Radarı projesi, bir üniversite çalışmasının parçası olarak geliştirilmiştir ve Django çerçevesini kullanarak web uygulaması geliştirme süreçlerini öğrenmeyi ve ekip çalışmasını teşvik etmeyi amaçlamaktadır.
-Gerçek dünya sorununa çözüm sunan bu proje, kullanıcıların en iyi satın alımları yapmalarına yardımcı olur.
-
+└── README.md      → Proje Dokümantasyonu
